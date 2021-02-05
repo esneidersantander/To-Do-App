@@ -1,0 +1,23 @@
+.todo__main-content{
+    align-items: center;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.todo__box-container{
+    color: white;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 650px;
+}
+
+.todo__main-title{
+    color: darken($color: $dark-grey, $amount:20);
+    margin-top: 30px;
+    font-size: 60px;
+}

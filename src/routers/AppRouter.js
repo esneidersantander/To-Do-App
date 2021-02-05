@@ -5,9 +5,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { LoginScreen } from "../components/auth/LoginScreen";
-import { RegisterScreen } from "../components/auth/RegisterScreen";
 import { ToDoScreen } from "../components/ToDo/ToDoScreen";
+import { AuthRouter } from "./AuthRouter";
 
 export const AppRouter = () => {
     return (
@@ -20,12 +19,8 @@ export const AppRouter = () => {
                         component={ToDoScreen}
                     />
                     <Route 
-                        path="/auth/login"
-                        component={LoginScreen}
-                    />
-                    <Route 
-                        path="/auth/register"
-                        component={RegisterScreen}
+                        path="/auth" 
+                        component={AuthRouter}
                     />
                 </Switch>
             </div>

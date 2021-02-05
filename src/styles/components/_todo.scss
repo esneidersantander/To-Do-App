@@ -2,22 +2,84 @@
     align-items: center;
     background-color: white;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     height: 100vh;
     width: 100vw;
 }
 .todo__box-container{
+    align-items: center;
     color: white;
-    background-color: blue;
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 100vh;
     width: 650px;
 }
 
 .todo__main-title{
     color: darken($color: $dark-grey, $amount:20);
-    margin-top: 30px;
     font-size: 60px;
+    margin-top: 30px;
+}
+
+.todo__list-main{
+    flex: 1 1 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+    overflow-y: scroll;
+    padding-left: 2%;
+    width: 90%;
+}
+.todo__list-item{
+    align-items: center;
+    background-color: $primary;
+    border-style:dashed;
+    border-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+
+}
+.todo-list-item-text{
+    font-size: 1.8rem;
+    margin:auto;
+}
+
+.fa-pen{
+    color: rgba(0, 0, 255, 0.747);
+}
+.fa-trash{
+    color: rgba(255, 0, 0, 0.575);
+}
+
+
+.todo-list-item-icons{
+    align-items: center;
+    display: flex;
+    padding-right: 2%;
+    justify-content: space-between;
+    font-size: 50px;
+}
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+ 
+::-webkit-scrollbar-track {
+    
+    border-radius: 7px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: rgb(104, 104, 104);
+    border-radius: 7px;
 }

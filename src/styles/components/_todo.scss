@@ -40,7 +40,8 @@
     display: flex;
     justify-content: space-between;
     width: 98%;
-
+    padding-top: 13px;
+    padding-bottom: 13px;
 }
 .todo-list-item-text{
     font-size: 1.8rem;
@@ -60,12 +61,17 @@
     display: flex;
     padding-right: 2%;
     justify-content: space-between;
-    font-size: 50px;
+    font-size: 20px;
 }
 
 
-
-
+.todo__main-logout{
+    color: rgb(92, 0, 0);
+    display: flex;
+    font-size: 40px;
+    margin-left: auto;
+    padding-top: 10px;
+}
 
 
 

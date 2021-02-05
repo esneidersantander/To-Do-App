@@ -1,9 +1,26 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/auth';
+import { ToDoList } from './ToDoList'
 
 export const ToDoScreen = () => {
+
+    const dispatch = useDispatch();
+
+    const handleLogout =()=>{
+        dispatch(startLogout());
+    }
+
+
     return (
         <div className="todo__main-content">
             <div className="todo__box-container">
+                <div 
+                    className="todo__main-logout pointer"
+                    onClick={handleLogout}
+                >
+                    <i className="fas fa-power-off"></i>
+                </div>
                 <h1 className="todo__main-title">ToDo App</h1>
 
                 <input 
@@ -11,47 +28,7 @@ export const ToDoScreen = () => {
                     type="text"
                 />
 
-                <ul className="todo__list-main">
-                    <li 
-                        className="todo__list-item mt-5"
-                    >
-                        <div className="todo-list-item-text">
-                            <h5>Salir a comer</h5>
-{/*                             asdads asdasdas asdad sasda sdasasd adsasdas dasasda dsasdasd asasdadsasdasda sasdadsasasdads asdasdas asdad sasda sdasasd adsasdas dasasda dsasdasd asasdadsasdasda sasdadsas dasdas */}
-                        </div>
-                        <div className="todo-list-item-icons">
-                            <i className="fa fa-pen"></i>
-                                &nbsp;
-                            <i className="fa fa-trash"></i>
-                        </div>
-                    </li>
-                    <li 
-                        className="todo__list-item mt-5"
-                    >
-                        <div className="todo-list-item-text">
-                            <h5>Hacer deberes</h5>
-{/*                             asdads asdasdas asdad sasda sdasasd adsasdas dasasda dsasdasd asasdadsasdasda sasdadsasasdads asdasdas asdad sasda sdasasd adsasdas dasasda dsasdasd asasdadsasdasda sasdadsas dasdas */}
-                        </div>
-                        <div className="todo-list-item-icons">
-                            <i className="fa fa-pen "></i>
-                                &nbsp;
-                            <i className="fa fa-trash"></i>
-                        </div>
-                    </li>
-                    <li 
-                        className="todo__list-item mt-5"
-                    >
-                        <div className="todo-list-item-text">
-                            <h5>Cantar una cancion</h5>
-{/*                             asdads asdasdas asdad sasda sdasasd adsasdas dasasda dsasdasd asasdadsasdasda sasdadsasasdads asdasdas asdad sasda sdasasd adsasdas dasasda dsasdasd asasdadsasdasda sasdadsas dasdas */}
-                        </div>
-                        <div className="todo-list-item-icons">
-                            <i className="fa fa-pen "></i>
-                                &nbsp;
-                            <i className="fa fa-trash"></i>
-                        </div>
-                    </li>
-                </ul>
+                <ToDoList/>
 
             </div>
         </div>

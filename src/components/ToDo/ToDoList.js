@@ -1,32 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import {ToDoListItem} from './ToDoListItem';
 
 export const ToDoList = () => {
+    const {todos} = useSelector(state => state.todos);
+
+    console.log(todos);
+
     return (
         <ul className="todo__list-main">
-            <li 
-                className="todo__list-item mt-5"
-            >
-                <div className="todo-list-item-text">
-                    <h5>Salir a comer</h5>
-                </div>
-                <div className="todo-list-item-icons">
-                    <i className="fa fa-pen"></i>
-                        &nbsp;
-                    <i className="fa fa-trash"></i>
-                </div>
-            </li>
-            <li 
-                className="todo__list-item mt-5"
-            >
-                <div className="todo-list-item-text">
-                    <h5>Hacer deberes</h5>
-                </div>
-                <div className="todo-list-item-icons">
-                    <i className="fa fa-pen "></i>
-                        &nbsp;
-                    <i className="fa fa-trash"></i>
-                </div>
-            </li>
+            {
+                todos.map(todo=>(
+                    <ToDoListItem
+                        key={todo.id}
+                        {...todo}
+                    />
+                ))
+            }
+
         </ul>
     )
 }

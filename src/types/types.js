@@ -7,4 +7,8 @@ export const types ={
 
     uiSetError:'[UI] Set Error',
     uiRemoveError:'[UI] Remove Error',
+
+
+    toDoAddNew:'[Notes] New to do',
+    toDoSetTodos:'[Notes] Set to dos',
 }

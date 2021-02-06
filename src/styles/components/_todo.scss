@@ -73,7 +73,10 @@
     padding-top: 10px;
 }
 
-
+.complete {
+    text-decoration: line-through;
+    color: $dark-grey;
+}
 
 
 ::-webkit-scrollbar {

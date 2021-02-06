@@ -12,6 +12,8 @@ import { AuthRouter } from "./AuthRouter";
 import { PrivateRoute } from "./PrivateRoutes";
 import { PublicRoute } from "./PublicRoutes";
 import { Wait } from "../components/auth/Wait";
+import { loadToDo } from "../helpers/loadToDo";
+import { setTodos } from "../actions/todo";
 
 
 
@@ -28,6 +30,8 @@ export const AppRouter = () => {
             if (user?.uid) {
                 dispatch(login (user.uid, user.displayName));
                 setIsLoggedIn(true);
+                const  todos = await loadToDo(user.uid);
+                dispatch(setTodos(todos));
             }else{
                 setIsLoggedIn(false);
             }

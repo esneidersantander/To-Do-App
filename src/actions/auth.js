@@ -2,6 +2,7 @@ import {types} from '../types/types';
 import {firebase, googleAuthProvider} from '../firebase/firebase-config'
 import { finishLoading, startLoading } from './ui';
 import Swal from 'sweetalert2';
+import { todoLogout } from './todo';
 
 
 export const startRegisterWithEmailPasswordName = (name, email, password) =>{
@@ -54,8 +55,9 @@ export const startLogout=()=>{
         dispatch (startLoading());
         await firebase.auth().signOut()
             .then(()=>{
-                dispatch(logout());
                 dispatch (finishLoading());
+                dispatch(todoLogout());
+                dispatch(logout());
             })
             .catch((err)=>{
                 dispatch (finishLoading());

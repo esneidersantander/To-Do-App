@@ -15,6 +15,17 @@ export const startAddNewToDo= (title)=>{
 
     }
 }
+export const startChangeStateToDo= (todo)=>{
+    return async (dispatch, getState)=>{
+        const {uid} = getState().auth;
+        const toDoToFireStore = {...todo};
+        delete toDoToFireStore.id;
+
+        await db.doc(`${uid}/record/todos/${todo.id}`).update(toDoToFireStore);
+        
+        dispatch(refreshTodo(todo.id, toDoToFireStore))
+    }
+}
 
 export const addNewNote=(id, todo)=>({
     type:types.toDoAddNew,
@@ -25,4 +36,16 @@ export const addNewNote=(id, todo)=>({
 export const setTodos=(todos)=>({
     type:types.toDoSetTodos,
     payload:todos
+})
+export const refreshTodo=(id, toDo)=>({    
+    type:types.toDoRefresh,
+    payload:{id,
+        toDo: {
+            id,
+            ...toDo}
+    }
+})
+
+export const todoLogout = ()=>({
+    type: types.toDoLogoutCleaning
 })

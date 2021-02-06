@@ -10,5 +10,7 @@ export const types ={
 
 
     toDoAddNew:'[Notes] New to do',
+    toDoRefresh:'[Notes] Regresh to do',
     toDoSetTodos:'[Notes] Set to dos',
+    toDoLogoutCleaning:'[Notes] Cleaning to do logout',
 }

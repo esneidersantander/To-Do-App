@@ -5,7 +5,6 @@ import {ToDoListItem} from './ToDoListItem';
 export const ToDoList = () => {
     const {todos} = useSelector(state => state.todos);
 
-    console.log(todos);
 
     return (
         <ul className="todo__list-main">

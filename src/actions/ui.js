@@ -7,3 +7,11 @@ export const startLoading=()=>({
 export const finishLoading  =()=>({
     type: types.uiFinishLoading
 });
+export const setError  =(error)=>({
+    type: types.uiSetError,
+    payload: error
+});
+
+export const removeError  =()=>({
+    type: types.uiRemoveError
+});

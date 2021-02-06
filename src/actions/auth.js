@@ -2,6 +2,23 @@ import {types} from '../types/types';
 import {firebase, googleAuthProvider} from '../firebase/firebase-config'
 import { finishLoading, startLoading } from './ui';
 
+
+export const startRegisterWithEmailPasswordName = (name, email, password) =>{
+    return (dispatch)=>{
+        dispatch (startLoading());
+        firebase.auth().createUserWithEmailAndPassword(email,password)
+            .then(async({user})=>{
+                await user.updateProfile({displayName:name});
+                dispatch(login(user.uid, user.displayName));
+                dispatch (finishLoading());
+            })
+            .catch((err)=>{
+                dispatch (finishLoading());
+            });
+    }
+}
+
+
 export const startLoginWithGoogle =()=>{
     return async (dispatch)=>{
         dispatch (startLoading());

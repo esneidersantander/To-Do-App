@@ -46,6 +46,22 @@ export const refreshTodo=(id, toDo)=>({
     }
 })
 
+
+
+export const startDeleting = (id)=>{
+    return async (dispatch, getState)=>{
+        const uid = getState().auth.uid;
+        await db.doc(`${uid}/record/todos/${id}`).delete()        
+        dispatch (deleteToDo(id));
+    }
+}
+
+export const deleteToDo=(id)=>({
+    type:types.toDoDelete,
+    payload:id
+})
+
+
 export const todoLogout = ()=>({
     type: types.toDoLogoutCleaning
 })

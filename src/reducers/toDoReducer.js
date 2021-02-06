@@ -13,6 +13,11 @@ export const toDoReducer = (state=initialState, action)=>{
                 ...state,
                 todos:[action.payload, ...state.todos]
             }
+        case types.toDoDelete:
+            return{
+                ...state,
+                todos: state.todos.filter(todo=>todo.id !== action.payload)
+            }
         case types.toDoLogoutCleaning:
             return{
                 ...state,

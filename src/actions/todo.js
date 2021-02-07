@@ -15,7 +15,7 @@ export const startAddNewToDo= (title)=>{
 
     }
 }
-export const startChangeStateToDo= (todo)=>{
+export const startUpdateToDo= (todo)=>{
     return async (dispatch, getState)=>{
         const {uid} = getState().auth;
         const toDoToFireStore = {...todo};

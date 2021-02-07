@@ -1,6 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
+import Swal from 'sweetalert2';
 import { useDispatch } from 'react-redux';
-import { startChangeStateToDo, startDeleting } from '../../actions/todo';
+import { startDeleting, startUpdateToDo } from '../../actions/todo';
 
 export const ToDoListItem = ({id, title, done, date}) => {
 
@@ -14,7 +15,7 @@ export const ToDoListItem = ({id, title, done, date}) => {
             donex = true; 
         }
 
-        dispatch(startChangeStateToDo({
+        dispatch(startUpdateToDo({
             id:id,
             title:title,
             done:donex,
@@ -22,9 +23,54 @@ export const ToDoListItem = ({id, title, done, date}) => {
         }));
     }
 
+    const handleEdit = () =>{
+        Swal.fire({
+            title: 'Update your todo',
+            input: 'text',
+            inputValue:title,
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Update',
+            showLoaderOnConfirm: true,
+            preConfirm: (todo) => {
+                if (todo.length < 2) {
+                    Swal.showValidationMessage(
+                        `You can't send an empty field`
+                      )
+                }
+              },
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    dispatch(startUpdateToDo({
+                        id:id,
+                        title:result.value,
+                        done:donex,
+                        date:date
+                    }));
+                    Swal.fire('Updated!', '', 'success')
+                } 
+          })
+    }
+
+
 
     const handleDelete =() => {
-        dispatch(startDeleting(id));
+        Swal.fire({
+            title: 'Do you want to delete this todo',
+            icon: 'warning',
+            showDenyButton: true,
+            confirmButtonText: `Yes`,
+            denyButtonText: `No`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(startDeleting(id));
+                Swal.fire('Deleted!', '', 'info')
+            } 
+        })
     }
 
     return (
@@ -38,8 +84,11 @@ export const ToDoListItem = ({id, title, done, date}) => {
                 <h5>{title}</h5>
             </div>
             <div className="todo-list-item-icons">
-{/*                 <i className="fa fa-pen "></i>
-                    &nbsp; */}
+                <i
+                    onClick={handleEdit}  
+                    className="fa fa-pen"
+                ></i>
+                    &nbsp;&nbsp;
                 <i
                     onClick={handleDelete} 
                     className="fa fa-trash pointer"

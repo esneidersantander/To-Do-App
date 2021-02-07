@@ -29,8 +29,6 @@ export const toDoReducer = (state=initialState, action)=>{
                 todos:[...action.payload]
             }
         case types.toDoRefresh:
-            console.log(action.payload.id);
-            console.log(action.payload.toDo);
             return {
                 ...state,
                 todos:state.todos.map(
